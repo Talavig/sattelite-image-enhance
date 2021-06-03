@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}home page{% endblock %}
+{% block content %}
+<h1>test</h1>
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h1>Upload an image</h1>
+            <hr>
+
+            <form action="/" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label>Select image</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="image" id="image">
+                        <label class="custom-file-label" for="image">Select image...</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Upload</button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block results %}
+{% if show_results %}
+
+<div>
+    <div class="container">
+        <div class="comparison">
+            <figure style="background-image:url({{url_for('static', filename='img/input0.jpg')}})">
+                <div class="handle"></div>
+                <div style="background-image:url({{url_for('static', filename='img/regular0.jpg')}})"
+                     class="divisor"></div>
+            </figure>
+            <input type="range" min="0" max="100" value="50" class="slider" oninput="moveDivisor()">
+        </div>
+    </div>
+</div>
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
+{% block canny_results %}
+{% if show_results %}
+
+<div>
+    <div class="container">
+        <div class="comparison">
+            <figure style="background-image:url({{url_for('static', filename='img/input_canny0.jpg')}})">
+                <div class="handle"></div>
+                <div style="background-image:url({{url_for('static', filename='img/regular_canny0.jpg')}})"
+                     class="divisor"></div>
+            </figure>
+            <input type="range" min="0" max="100" value="50" class="slider" oninput="moveDivisor()">
+        </div>
+    </div>
+</div>
+{% else %}
+{{ super() }}
+{% endif %}
+
+{% endblock %}

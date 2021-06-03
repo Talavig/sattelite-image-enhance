@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}home page{% endblock %}
+{% block results %}
+<div>
+    <div class="container">
+        <div id="comparison">
+            <figure style="background-image:url({{url_for('static', filename='img/input0.jpg')}})">
+                <div id="handle"></div>
+                <div style="background-image:url({{url_for('static', filename='img/regular0.jpg')}})"  id="divisor"></div>
+            </figure>
+            <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+        </div>
+    </div>
+</div>
+{% endblock %}
